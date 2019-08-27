@@ -26,7 +26,7 @@ Ninapro Database 的資料遇處理練習<br>
 	• Sliding duration: 80 samples
 	• EMG 特徵提取: 使用[1]中的提取方法，一個sliding window 內的EMG訊號做小波包轉換(WT)，使用db5作為小波包的基底函數，分解層數為四層，window內的原始訊號會被分為24個不同的頻帶(這部分不清楚，要再查)，並可以得到2^4=16個能量值，能量值計算如下:
 		E(j,i) = sigma(ρs(n,j,k)^2)		
-	  其中E(j, i)為第 j 層第 I 個節點的能量值，ρs(n,j,k)為小波包分解的係數，因總共有12個sEMG通道( i.e. EMG sensor有十二個)，故特徵矩陣為16x12(能量x信號通道)，並將矩陣內的元素全部進行歸一化為0~1的值。
+	  其中E(j, i)為第 j 層第 I 個節點的能量值，ρs(n,j,k)為小波包分解的係數，因總共有10個sEMG通道( i.e. EMG sensor有十個)，故特徵矩陣為16x12(能量x信號通道)，並將矩陣內的元素全部進行歸一化為0~1的值。
 	• Label 定義: 一個 Sliding window 底下最相關的stimulus值(1~12表示動作1~動作12，0表示未做動作)，也就是說判斷Sliding window裡面的stimulus值最多的為何(ex. 動作1有100個sample point，動作2有50個，則判定Label為動作1)
 	• 模型架構: 兩層捲基層、三層全連接層(最後一層加softmax函數)
 	• Loss function: Cross Entropy
